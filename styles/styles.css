@@ -1,5 +1,3 @@
-/* stylelint-disable selector-class-pattern, no-descending-specificity */
-
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -185,11 +183,6 @@ html.adobe-ue-edit {
   height: unset
 }
 
-html.adobe-ue-preview body,
-html.adobe-ue-edit body {
-  height: unset
-}
-
 html {
   font-size: 62.5%;
 }
@@ -208,6 +201,11 @@ body {
 
 body:not(.appear) {
   display: none;
+}
+
+html.adobe-ue-preview body,
+html.adobe-ue-edit body {
+  height: unset
 }
 
 header {
@@ -503,13 +501,13 @@ body.columns main > .section:empty {
   display: none;
 }
 
-@media (width >= 600px) {
+@media (min-width: 600px) {
   body.columns main {
       padding: var(--spacing-large) var(--spacing-big);
   }
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   body.columns main {
     flex-direction: row;
   }

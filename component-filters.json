@@ -34,6 +34,20 @@
     ]
   },
   {
+    "id": "wishlist-section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "commerce-wishlist"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"

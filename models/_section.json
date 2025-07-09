@@ -92,6 +92,13 @@
         "reward-sticky",
         "quiz"
       ]
+    },
+    {
+      "id": "wishlist-section",
+      "components": [
+        {"...": "./_common-blocks.json"},
+        "commerce-wishlist"
+      ]
     }
   ]
 }
