@@ -12,6 +12,14 @@
  * governing permissions and limitations under the License.
  */
 
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(root) {
+  animation-duration: 0.5s;
+}
+
 /* stylelint-disable no-empty-source */
 :root, .dropin-design {
   /* Adobe Commerce Dropin design tokens */
@@ -243,7 +251,7 @@ h1 {
 }
 
 h2 {
-  font: var(--type-display-2-font);
+  font: normal normal normal 48px/52px Baskerville, serif;
   letter-spacing: var(--type-display-2-letter-spacing);
 }
 
@@ -384,10 +392,6 @@ button.button.secondary {
 main a.button.secondary:hover,
 button.button.secondary:hover {
   color: var(--color-brand-600);
-}
-
-main input:hover {
-  border: var(--shape-border-width-1) solid var(--color-neutral-700);
 }
 
 main blockquote {
@@ -570,6 +574,7 @@ main > .section + .background > div {
   main > .section + .background {
     border-radius: 12px;
     padding: 50px 0 2px;
+    margin-top: -20px;
   }
 }
 
