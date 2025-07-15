@@ -5,8 +5,8 @@ import {
 import htm from './htm.js';
 import {
   renderPrice,
+  rootLink,
 } from '../../scripts/commerce.js';
-import { rootLink } from '../../scripts/scripts.js';
 
 const html = htm.bind(h);
 const searchUnitId = 'livesearch-plp';

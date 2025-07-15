@@ -588,6 +588,67 @@ export async function commerceEndpointWithQueryParams() {
   return urlWithQueryParams;
 }
 
+export async function performCatalogServiceQuery(query, variables) {
+  const headers = {
+    ...(getHeaders('cs')),
+    'Content-Type': 'application/json',
+  };
+}
+
+/* Common query fragments */
+export const priceFieldsFragment = `fragment priceFields on ProductViewPrice {
+  roles
+  regular {
+      amount {
+          currency
+          value
+      }
+  }
+  final {
+      amount {
+          currency
+          value
+      }
+  }
+}`;
+
+export function renderPrice(product, format, html = (strings, ...values) => strings.reduce((result, string, i) => result + string + (values[i] || ''), ''), Fragment = null) {
+  // Simple product
+  if (product.price) {
+    const { regular, final } = product.price;
+    if (regular.amount.value === final.amount.value) {
+      return html`<span class="price-final">${format(final.amount.value)}</span>`;
+    }
+    return html`<${Fragment}>
+      <span class="price-regular">${format(regular.amount.value)}</span> <span class="price-final">${format(final.amount.value)}</span>
+    </${Fragment}>`;
+  }
+
+  // Complex product
+  if (product.priceRange) {
+    const { regular: regularMin, final: finalMin } = product.priceRange.minimum;
+    const { final: finalMax } = product.priceRange.maximum;
+
+    if (finalMin.amount.value !== finalMax.amount.value) {
+      return html`
+      <div class="price-range">
+        ${finalMin.amount.value !== regularMin.amount.value ? html`<span class="price-regular">${format(regularMin.amount.value)}</span>` : ''}
+        <span class="price-from">${format(finalMin.amount.value)} - ${format(finalMax.amount.value)}</span>
+      </div>`;
+    }
+
+    if (finalMin.amount.value !== regularMin.amount.value) {
+      return html`<${Fragment}>
+      <span class="price-final">${format(finalMin.amount.value)} - ${format(regularMin.amount.value)}</span>
+    </${Fragment}>`;
+    }
+
+    return html`<span class="price-final">${format(finalMin.amount.value)}</span>`;
+  }
+
+  return null;
+}
+
 /**
  * Extracts the SKU from the current URL path.
  * @returns {string|null} The SKU extracted from the URL, or null if not found
