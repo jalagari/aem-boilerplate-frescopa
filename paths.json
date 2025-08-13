@@ -1,6 +1,7 @@
 {
   "mappings": [
     "/content/aem-boilerplate-frescopa/:/",
+    "/content/aem-boilerplate-frescopa/en/:/",
     "/content/aem-boilerplate-frescopa/en/locations/locationslist:/locations.json",
     "/content/aem-boilerplate-frescopa/es:/es",
     "/content/aem-boilerplate-frescopa/es/:/es/",
