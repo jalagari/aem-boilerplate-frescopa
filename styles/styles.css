@@ -1,5 +1,3 @@
-/* stylelint-disable selector-class-pattern, no-descending-specificity */
-
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -11,6 +9,14 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(root) {
+  animation-duration: 0.5s;
+}
 
 /* stylelint-disable no-empty-source */
 :root, .dropin-design {
@@ -177,11 +183,6 @@ html.adobe-ue-edit {
   height: unset
 }
 
-html.adobe-ue-preview body,
-html.adobe-ue-edit body {
-  height: unset
-}
-
 html {
   font-size: 62.5%;
 }
@@ -200,6 +201,11 @@ body {
 
 body:not(.appear) {
   display: none;
+}
+
+html.adobe-ue-preview body,
+html.adobe-ue-edit body {
+  height: unset
 }
 
 header {
@@ -243,7 +249,7 @@ h1 {
 }
 
 h2 {
-  font: var(--type-display-2-font);
+  font: normal normal normal 48px/52px Baskerville, serif;
   letter-spacing: var(--type-display-2-letter-spacing);
 }
 
@@ -386,10 +392,6 @@ button.button.secondary:hover {
   color: var(--color-brand-600);
 }
 
-main input:hover {
-  border: var(--shape-border-width-1) solid var(--color-neutral-700);
-}
-
 main blockquote {
   font-style: italic;
   margin: 3rem;
@@ -499,13 +501,13 @@ body.columns main > .section:empty {
   display: none;
 }
 
-@media (width >= 600px) {
+@media (min-width: 600px) {
   body.columns main {
       padding: var(--spacing-large) var(--spacing-big);
   }
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   body.columns main {
     flex-direction: row;
   }
@@ -570,6 +572,7 @@ main > .section + .background > div {
   main > .section + .background {
     border-radius: 12px;
     padding: 50px 0 2px;
+    margin-top: -20px;
   }
 }
 

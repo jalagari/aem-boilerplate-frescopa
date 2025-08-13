@@ -42,6 +42,21 @@
         },
         {
           "...": "../blocks/hero/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/store-locator/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/quiz/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/bloglist/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/teaser/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/form/_*.json#/definitions"
         }
       ]
     },
@@ -87,6 +102,9 @@
         },
         {
           "...": "../blocks/commerce-search-order/_*.json#/definitions"
+        },
+        {
+          "...": "../blocks/commerce-gift-options/_*.json#/definitions"
         }
       ]
     },
@@ -138,6 +156,15 @@
         },
         {
           "...": "../blocks/commerce-create-return/_*.json#/definitions"
+        }
+      ]
+    },
+    {
+      "title": "Wishlist",
+      "id": "wishlist",
+      "components": [
+        {
+          "...": "../blocks/commerce-wishlist/_*.json#/definitions"
         }
       ]
     }

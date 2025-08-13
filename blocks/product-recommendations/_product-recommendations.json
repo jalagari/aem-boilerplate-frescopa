@@ -20,6 +20,19 @@
     {
       "id": "product-recommendations",
       "fields": [
+        {
+          "component": "text",
+          "name": "currentsku",
+          "label": "Current SKU",
+          "description": "Current SKU"
+        },
+        {
+          "component": "text",
+          "name": "recid",
+          "label": "Record ID",
+          "description": "Record ID",
+          "required": true
+        }       
       ]
     }
   ],
