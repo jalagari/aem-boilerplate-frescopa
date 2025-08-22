@@ -23,7 +23,7 @@ main > .section.article h6 + div {
 
 /* limit the width of content sections in the article  */
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
     main > .section.article > div.default-content-wrapper > div {
         max-width: 840px;
         margin: 0 auto;
@@ -44,7 +44,7 @@ main > .section.article .columns img {
     border-radius: 10px;
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
     main > .section.article .columns img {
         max-width: 520px;
         border-radius: 10px;

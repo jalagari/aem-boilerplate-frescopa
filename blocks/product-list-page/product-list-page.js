@@ -1,14 +1,12 @@
 import ProductList from '@dropins/storefront-product-discovery/containers/ProductList.js';
 import { render as provider } from '@dropins/storefront-product-discovery/render.js';
 import { readBlockConfig } from '../../scripts/aem.js';
-import { fetchPlaceholders, rootLink } from '../../scripts/commerce.js';
+import { rootLink } from '../../scripts/commerce.js';
 
 // Initializers
 import '../../scripts/initializers/search.js';
 
 export default async function decorate(block) {
-  const labels = await fetchPlaceholders();
-
   const config = readBlockConfig(block);
 
   const fragment = document.createRange().createContextualFragment(`
@@ -28,17 +26,16 @@ export default async function decorate(block) {
 
   const categoryPathConfig = config.urlpath ? { categoryPath: config.urlpath } : {};
 
-
   return Promise.all([
     provider.render(ProductList, {
       routeProduct: (product) => rootLink(`/products/${product.urlKey}/${product.sku}`),
       ...categoryPathConfig,
       slots: {
         Header: (ctx, elem) => {
-          elem.remove()
+          elem.remove();
         },
         Footer: (ctx, elem) => {
-          elem.remove()
+          elem.remove();
         },
         ProductName: (ctx) => {
           const descr = document.createElement('a');
@@ -46,9 +43,8 @@ export default async function decorate(block) {
           descr.innerHTML = ctx.product.shortDescription;
           descr.href = rootLink(`/products/${ctx.product.urlKey}/${ctx.product.sku}`);
           ctx.appendChild(descr);
-        }
+        },
       },
     })($productList),
   ]);
-
 }

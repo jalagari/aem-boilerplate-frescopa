@@ -16,7 +16,7 @@ footer .section {
   flex-direction: column;
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   footer .section {
     flex-direction: row;
   }
@@ -71,7 +71,7 @@ footer .columns-wrapper .columns div {
   margin-bottom: 20px;
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   footer .footer > div {
     padding: 40px 32px 10px;
   }

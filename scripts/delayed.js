@@ -3,7 +3,6 @@ import { getUserTokenCookie } from './initializers/index.js';
 import { getConsent } from './commerce.js';
 import { loadScript } from './aem.js';
 
-
 async function initAnalytics() {
   try {
     // Load Commerce events SDK and collector

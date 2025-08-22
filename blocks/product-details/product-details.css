@@ -35,14 +35,14 @@
   max-height: 60vh;
 }
 
-.product-details__gallery .pdp-carousel--thumbnailsRow {
+.product-details__gallery .pdp-carousel--thumbnails-row {
   max-height: 80vh;
 }
 
 .product-details__gallery .pdp-overlay__content .pdp-carousel,
-.product-details__gallery .pdp-overlay__content .pdp-carousel--thumbnailsRow
+.product-details__gallery .pdp-overlay__content .pdp-carousel--thumbnails-row
 {
-  max-height: unset;;
+  max-height: unset;
 }
 
 

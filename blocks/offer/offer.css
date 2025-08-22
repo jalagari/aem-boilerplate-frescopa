@@ -7,7 +7,7 @@
   padding: 20px;
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .offer-content {
     padding: 50px 191px 50px 334px;
     background: url('../../styles/backgrounds/small.svg') no-repeat center center/cover, #F4E9DC;
@@ -33,7 +33,7 @@
   justify-content: center;
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .offer-left h4,p {
     margin: 0;
   }

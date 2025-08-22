@@ -9,7 +9,7 @@
   background-position: 15% 0%;
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .reward-content {
     flex-direction: row;
     justify-content: space-around;
@@ -27,7 +27,7 @@
   width: 50%;
 }
 
-@media (width < 900px) {
+@media (max-width: 899px) {
   .reward-left {
     padding-left: 220px;
   }
@@ -56,7 +56,7 @@
   line-height: 32px;
 }
 
-@media (width >= 900px) {
+@media (min-width: 900px) {
   .reward-left h4,p {
     margin: 0;
   }

@@ -588,13 +588,6 @@ export async function commerceEndpointWithQueryParams() {
   return urlWithQueryParams;
 }
 
-export async function performCatalogServiceQuery(query, variables) {
-  const headers = {
-    ...(getHeaders('cs')),
-    'Content-Type': 'application/json',
-  };
-}
-
 /* Common query fragments */
 export const priceFieldsFragment = `fragment priceFields on ProductViewPrice {
   roles
