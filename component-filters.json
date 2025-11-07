@@ -27,6 +27,7 @@
       "product-details",
       "video",
       "form",
+      "embed-adaptive-form",
       "reward",
       "reward-sticky",
       "quiz"
@@ -86,13 +87,15 @@
       "form-submit-button",
       "number-input",
       "panel",
+      "password",
       "plain-text",
       "radio-group",
       "rating",
       "telephone-input",
       "text-input",
       "tnc",
-      "wizard"
+      "wizard",
+      "range"
     ]
   },
   {

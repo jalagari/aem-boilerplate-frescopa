@@ -18,8 +18,23 @@
     {
       "...": "./models/form-components/_*.json#/definitions"
     },
-    {
-      "...": "./components/*/_*.json#/definitions"
+    { 
+      "...": "./components/accordion/_accordion.json#/definitions" 
+    },
+    { 
+      "...": "./components/modal/_modal.json#/definitions" 
+    },
+    { 
+      "...": "./components/password/_password.json#/definitions" 
+    },
+    { 
+      "...": "./components/rating/_rating.json#/definitions" 
+    },
+    { 
+      "...": "./components/tnc/_tnc.json#/definitions" 
+    },
+    { 
+      "...": "./components/wizard/_wizard.json#/definitions" 
     }
   ],
   "models": [
@@ -58,6 +73,10 @@
                   {
                       "name": "Send email",
                       "value": "fd/af/components/guidesubmittype/email"
+                  },
+                  {
+                      "name": "Persist to Spreadsheet",
+                      "value": "spreadsheet"
                   }
               ],
               "value" : ""
@@ -75,6 +94,13 @@
               "label": "URL For POST request",
               "valueType": "string",
               "condition": { "==": [{ "var": "actionType" }, "fd/af/components/guidesubmittype/restendpoint"] }
+          },
+          {
+              "condition": { "==": [{ "var": "actionType" }, "spreadsheet"] },
+              "component": "text",
+              "name": "spreadsheetUrl",
+              "label": "Spreadsheet Url",
+              "valueType": "string"
           },
           {
               "component": "container",
@@ -122,6 +148,12 @@
                       "name": "useExternalEmailTemplate",
                       "label": "Use external template",
                       "valueType": "boolean"
+                  },
+                  {
+                    "component": "boolean",
+                    "name": "useHtmlTemplate",
+                    "label": "Use html template",
+                    "valueType": "boolean"
                   },
                   {
                       "component": "aem-content",
@@ -174,13 +206,15 @@
         "form-submit-button",
         "number-input",
         "panel",
+        "password",
         "plain-text",
         "radio-group",
         "rating",
         "telephone-input",
         "text-input",
         "tnc",
-        "wizard"
+        "wizard",
+        "range"
       ]
     }
   ]
