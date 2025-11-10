@@ -9,7 +9,9 @@
             "resourceType": "core/fd/components/form/button/v1/button",
             "template": {
               "jcr:title": "Button",
-              "fieldType": "button"
+              "fieldType": "button",
+              "enabled": true,
+              "visible": true
             }
           }
         }
@@ -21,15 +23,14 @@
       "id": "form-button",
       "fields": [
         {
-          "component": "tab",
+          "component": "container",
+          "name": "basic",
           "label": "Basic",
-          "name": "basic"
+          "collapsible": false,
+          "...": "../form-common/_basic-fields.json"
         },
         {
-          "...": "../form-common/_basic-fields.json#/fields"
-        },
-        {
-          "...": "../form-common/_help-container.json#/fields"
+          "...": "../form-common/_help-container.json"
         }
       ]
     }

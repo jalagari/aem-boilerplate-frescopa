@@ -10,7 +10,9 @@
             "template": {
               "jcr:title": "Rating",
               "fieldType": "number-input",
-              "fd:viewType": "rating"
+              "fd:viewType": "rating",
+              "enabled": true,
+              "visible": true
             }
           }
         }
@@ -22,23 +24,21 @@
       "id": "rating",
       "fields": [
         {
-          "component": "tab",
+          "component": "container",
+          "name": "basic",
           "label": "Basic",
-          "name": "basic"
+          "collapsible": false,
+          "...": "../../models/form-common/_basic-input-fields.json"
         },
         {
-          "...": "../../models/form-common/_basic-input-fields.json#/fields"
+        "...": "../../models/form-common/_help-container.json"
         },
         {
-          "component": "tab",
+          "component": "container",
+          "name": "validation",
           "label": "Validation",
-          "name": "validation"
-        },
-        {
-          "...": "../../models/form-common/_number-validation-fields.json#/fields"
-        },
-        {
-          "...": "../../models/form-common/_help-container.json#/fields"
+          "collapsible": true,
+          "...": "../../models/form-common/_number-validation-fields.json"
         }
       ]
     }

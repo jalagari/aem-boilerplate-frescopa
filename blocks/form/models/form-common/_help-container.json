@@ -1,10 +1,9 @@
 {
+    "component": "container",
+    "name": "help",
+    "label": "Help Content",
+    "collapsible": true,
     "fields": [
-        {
-            "component": "tab",
-            "label": "Help Content",
-            "name": "help"
-        },
         {
             "component": "richtext",
             "name": "description",

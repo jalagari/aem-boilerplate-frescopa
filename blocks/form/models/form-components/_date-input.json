@@ -1,7 +1,7 @@
 {
     "definitions": [
         {
-            "title": "Date Input",
+            "title": "Date Picker",
             "id": "date-input",
             "plugins": {
                 "xwalk": {
@@ -9,7 +9,9 @@
                         "resourceType": "core/fd/components/form/datepicker/v1/datepicker",
                         "template": {
                             "jcr:title": "Date Input",
-                            "fieldType": "date-input"
+                            "fieldType": "date-input",
+                            "enabled": true,
+                            "visible": true
                         }
                     }
                 }
@@ -21,66 +23,61 @@
             "id": "date-input",
             "fields": [
                 {
-                    "component": "tab",
+                    "component": "container",
+                    "name": "basic",
                     "label": "Basic",
-                    "name": "basic"
+                    "collapsible": false,
+                    "...": "../form-common/_basic-input-placeholder-fields.json"
                 },
                 {
-                    "...": "../form-common/_basic-input-placeholder-fields.json#/fields"
+                    "...": "../form-common/_help-container.json"
                 },
                 {
-                    "component": "date-time",
-                    "name": "default",
-                    "label": "Default Value",
-                    "valueType": "date"
-                },
-                {
-                    "component": "tab",
+                    "component": "container",
+                    "name": "validation",
                     "label": "Validation",
-                    "name": "validation"
+                    "collapsible": true,
+                    "...": "../form-common/_date-validation-fields.json"
                 },
                 {
-                    "...": "../form-common/_date-validation-fields.json#/fields"
-                },
-                {
-                    "component": "tab",
+                    "component": "container",
+                    "name": "formats",
                     "label": "Formats",
-                    "name": "formats"
-                },
-                {
-                    "component": "select",
-                    "label": "Display Format",
-                    "name": "displayFormat",
-                    "valueType": "string",
-                    "options": [
+                    "collapsible": true,
+                    "fields": [
                         {
-                            "name": "No Pattern",
-                            "value": ""
-                        },
-                        {
-                            "name": "01 April, 2007",
-                            "value": "d MMMM, y"
-                        },
-                        {
-                            "name": "April 01, 2007",
-                            "value": "MMMM d, y"
-                        },
-                        {
-                            "name": "Sunday, 01 April, 2007",
-                            "value": "EEEE, d MMMM, y"
-                        },
-                        {
-                            "name": "Sunday, April 01, 2007",
-                            "value": "EEEE, MMMM d, y"
-                        },
-                        {
-                            "name": "1/4/2007",
-                            "value": "d/M/y"
+                            "component": "select",
+                            "label": "Display Format",
+                            "name": "displayFormat",
+                            "valueType": "string",
+                            "options": [
+                                {
+                                    "name": "No Pattern",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "01 April, 2007",
+                                    "value": "d MMMM, y"
+                                },
+                                {
+                                    "name": "April 01, 2007",
+                                    "value": "MMMM d, y"
+                                },
+                                {
+                                    "name": "Sunday, 01 April, 2007",
+                                    "value": "EEEE, d MMMM, y"
+                                },
+                                {
+                                    "name": "Sunday, April 01, 2007",
+                                    "value": "EEEE, MMMM d, y"
+                                },
+                                {
+                                    "name": "1/4/2007",
+                                    "value": "d/M/y"
+                                }
+                            ]
                         }
                     ]
-                },
-                {
-                    "...": "../form-common/_help-container.json#/fields"
                 }
             ]
         }

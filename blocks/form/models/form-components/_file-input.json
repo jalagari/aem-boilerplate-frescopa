@@ -18,8 +18,9 @@
                                 "application/pdf"
                             ],
                             "buttonText": "Attach",
-                            "dragDropText": "Drag and Drop To Upload",
-                            "type": "file"
+                            "type": "file",
+                            "enabled": true,
+                            "visible": true
                         }
                     }
                 }
@@ -31,60 +32,50 @@
             "id": "file-input",
             "fields": [
                 {
-                    "component": "tab",
+                    "component": "container",
+                    "name": "basic",
                     "label": "Basic",
-                    "name": "basic"
+                    "collapsible": false,
+                    "...": "../form-common/_basic-input-fields.json"
                 },
                 {
-                    "...": "../form-common/_basic-input-fields.json#/fields"
+                    "...": "../form-common/_help-container.json"
                 },
                 {
-                    "component": "text",
-                    "name": "buttonText",
-                    "label": "Button Title",
-                    "valueType": "string"
-                },
-                {
-                "component": "richtext",
-                "name": "dragDropText",
-                "label": "Drag Drop Text",
-                "valueType": "string"
-                },
-                {
-                    "component": "tab",
+                    "component": "container",
+                    "name": "validation",
                     "label": "Validation",
-                    "name": "validation"
-                },
-                {
-                    "...": "../form-common/_basic-validation-fields.json#/fields"
-                },
-                {
-                    "component": "number",
-                    "name": "maxFileSize",
-                    "label": "Maximum file size (MB)",
-                    "valueType": "string"
-                },
-                {
-                    "component": "text",
-                    "name": "maxFileSizeMessage",
-                    "label": "Maximum file size error message",
-                    "valueType": "string"
-                },
-                {
-                    "component": "text",
-                    "name": "accept",
-                    "label": "Allowed file types",
-                    "valueType": "string",
-                    "multi": true
-                },
-                {
-                    "component": "text",
-                    "name": "acceptMessage",
-                    "label": "File type error message",
-                    "valueType": "string"
-                },
-                {
-                    "...": "../form-common/_help-container.json#/fields"
+                    "collapsible": true,
+                    "fields": [
+                        {
+                            "...": "../form-common/_basic-validation-fields.json#/fields"
+                        },
+                        {
+                            "component": "number",
+                            "name": "maxFileSize",
+                            "label": "Maximum file size (MB)",
+                            "valueType": "string"
+                        },
+                        {
+                            "component": "text",
+                            "name": "maxFileSizeMessage",
+                            "label": "Maximum file size error message",
+                            "valueType": "string"
+                        },
+                        {
+                            "component": "text",
+                            "name": "accept",
+                            "label": "Allowed file types",
+                            "valueType": "string",
+                            "multi": true
+                        },
+                        {
+                            "component": "text",
+                            "name": "acceptMessage",
+                            "label": "File type error message",
+                            "valueType": "string"
+                        }
+                    ]
                 }
             ]
         }

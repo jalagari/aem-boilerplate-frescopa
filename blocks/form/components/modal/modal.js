@@ -4,7 +4,7 @@ import { decorateIcons } from '../../../../scripts/aem.js';
 export class Modal {
   constructor() {
     this.dialog = null;
-    this.fieldModel = null;
+    this.formModel = null;
     this.panel = null;
     this.modalWrapper = null;
     this.originalContent = null; // Store original content
@@ -14,16 +14,20 @@ export class Modal {
     const dialog = document.createElement('dialog');
     const dialogContent = document.createElement('div');
     dialogContent.classList.add('modal-content');
-    // First time initialization - store original content
-    if (!this.originalContent) {
+    // Use the stored original content instead of panel.childNodes
+    if (this.originalContent) {
+      // Clone the nodes to avoid reference issues
+      this.originalContent.forEach((node) => {
+        dialogContent.appendChild(node.cloneNode(true));
+      });
+    } else {
+      // First time initialization - store original content
       this.originalContent = [...panel.childNodes];
+      this.originalContent.forEach((node) => {
+        dialogContent.appendChild(node.cloneNode(true));
+      });
     }
 
-    // Move the original nodes to the dialog content
-    // This preserves all event listeners and attached logic
-    this.originalContent.forEach((node) => {
-      dialogContent.appendChild(node);
-    });
     dialog.append(dialogContent);
     const closeButton = document.createElement('button');
     closeButton.classList.add('close-button');
@@ -35,7 +39,7 @@ export class Modal {
     dialog.addEventListener('click', (event) => {
       const dialogDimensions = dialog.getBoundingClientRect();
       if (event.clientX < dialogDimensions.left || event.clientX > dialogDimensions.right
-        || event.clientY < dialogDimensions.top || event.clientY > dialogDimensions.bottom) {
+          || event.clientY < dialogDimensions.top || event.clientY > dialogDimensions.bottom) {
         dialog.close();
       }
     });
@@ -44,15 +48,9 @@ export class Modal {
     });
     dialog.addEventListener('close', () => {
       document.body.classList.remove('modal-open');
-      // Move the content back to the panel when dialog closes
-      const modalContent = dialog.querySelector('.modal-content');
-      while (modalContent.firstChild) {
-        this.panel.appendChild(modalContent.firstChild);
-      }
-
       dialog.remove();
-      if (this.fieldModel) {
-        this.fieldModel.visible = false;
+      if (this.formModel) {
+        this.formModel.getElement(panel?.id).visible = false;
       }
     });
     return dialog;
@@ -76,14 +74,16 @@ export class Modal {
     }
   }
 
-  setFieldModel(model) {
-    this.fieldModel = model;
+  setFormModel(model) {
+    this.formModel = model;
   }
 
   wrapDialog(panel) {
     const wrapper = document.createElement('div');
     wrapper.classList.add('modal');
     wrapper.appendChild(this.dialog);
+    // Clear panel before adding wrapper
+    panel.innerHTML = '';
     panel.appendChild(wrapper);
     this.modalWrapper = wrapper;
   }
@@ -95,19 +95,14 @@ export class Modal {
   }
 }
 
-export default async function decorate(panel, panelJson, container, formId) {
+export default async function decorate(panel) {
   const modal = new Modal();
   modal.decorate(panel);
-  subscribe(panel, formId, async (fieldDiv, fieldModel) => {
-    modal.setFieldModel(fieldModel);
-    fieldModel.subscribe((e) => {
-      const { payload } = e;
-      payload?.changes?.forEach((change) => {
-        if (change?.propertyName === 'visible' && change?.currentValue === true) {
-          modal.showModal();
-        }
-      });
-    }, 'change');
+  subscribe(panel, async (fieldDiv, formModel) => {
+    modal.setFormModel(formModel);
+    if (formModel.getElement(fieldDiv.id).visible === true) {
+      modal.showModal();
+    }
   });
   return panel;
 }

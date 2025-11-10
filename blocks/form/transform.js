@@ -185,7 +185,6 @@ export default class DocBasedFormToAF {
     ['text-area', 'multiline-input'],
     ['fieldset', 'panel'],
     ['button', 'button'],
-    ['rating', 'number-input'],
   ]);
 
   /**
