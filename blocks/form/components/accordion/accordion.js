@@ -1,15 +1,11 @@
-export function handleAccordionNavigation(panel, tab, forceOpen = false) {
+export function handleAccordionNavigation(panel, tab) {
   const accordionTabs = panel?.querySelectorAll(':scope > fieldset');
   accordionTabs.forEach((otherTab) => {
     if (otherTab !== tab) {
       otherTab.classList.add('accordion-collapse');
     }
   });
-  if (forceOpen) {
-    tab.classList.remove('accordion-collapse');
-  } else {
-    tab.classList.toggle('accordion-collapse');
-  }
+  tab.classList.toggle('accordion-collapse');
 }
 
 export default function decorate(panel) {

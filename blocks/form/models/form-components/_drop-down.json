@@ -18,7 +18,9 @@
                 "Item 1",
                 "Item 2"
               ],
-              "type": "string"
+              "enabled": true,
+              "visible": true,
+              "type": "number"
             }
           }
         }
@@ -30,68 +32,52 @@
       "id": "drop-down",
       "fields": [
         {
-          "component": "tab",
+          "component": "container",
+          "name": "basic",
           "label": "Basic",
-          "name": "basic"
-        },
-        {
-          "...": "../form-common/_basic-select-fields.json#/fields"
-        },
-        {
-          "component": "boolean",
-          "label": "Allow multiple selection",
-          "name": "multiSelect",
-          "valueType": "boolean"
-        },
-        {
-          "component": "select",
-          "label": "Save value as",
-          "name": "type",
-          "valueType": "string",
-          "value": "number",
-          "options": [
+          "collapsible": false,
+          "fields": [
             {
-              "name": "String",
-              "value": "string"
+              "...": "../form-common/_basic-select-fields.json#/fields"
             },
             {
-              "name": "Boolean",
-              "value": "boolean"
+              "component": "select",
+              "label": "Data type of submitted value",
+              "name": "type",
+              "valueType": "string",
+              "value": "number",
+              "options": [
+                {
+                  "name": "String",
+                  "value": "string"
+                },
+                {
+                  "name": "Boolean",
+                  "value": "boolean"
+                },
+                {
+                  "name": "Number",
+                  "value": "number"
+                }
+              ]
             },
             {
-              "name": "Number",
-              "value": "number"
-            },
-            {
-              "name": "String[]",
-              "value": "string[]"
-            },
-            {
-              "name": "Boolean[]",
-              "value": "boolean[]"
-            },
-            {
-              "name": "Number[]",
-              "value": "number[]"
+              "component": "text",
+              "name": "placeholder",
+              "label": "Placeholder text",
+              "valueType": "string"
             }
           ]
         },
         {
-          "component": "text",
-          "name": "placeholder",
-          "label": "Placeholder text",
-          "valueType": "string"
+          "...": "../form-common/_help-container.json"
         },
         {
-          "component": "tab",
+          "component": "container",
+          "name": "validation",
           "label": "Validation",
-          "name": "validation"
-        },
-        {
-          "...": "../form-common/_basic-validation-fields.json#/fields"
-        },
-        {
-          "...": "../form-common/_help-container.json#/fields"
+          "collapsible": true,
+          "...": "../form-common/_basic-validation-fields.json"
         }
       ]
     }

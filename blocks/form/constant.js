@@ -3,10 +3,6 @@ export const dragDropText = 'Drag and Drop To Upload';
 
 export const DEFAULT_THANK_YOU_MESSAGE = 'Thank you for your submission.';
 
-// Logging Configuration
-// To set log level, modify this constant:
-export const LOG_LEVEL = 'error'; // Available options: 'off', 'debug', 'info', 'warn', 'error'
-
 export const defaultErrorMessages = {
   accept: 'The specified file type not supported.',
   maxFileSize: 'File too large. Reduce size and try again.',
@@ -20,12 +16,22 @@ export const defaultErrorMessages = {
   required: 'Please fill in this field.',
 };
 
+export function getRouting() {
+  const regex = /(.*?)--(.*?)--(.*?)\.(hlx|aem)\.(.*)/;
+  const match = window?.location?.host?.match(regex);
+  if (match) {
+    const [, branch, site, org, , tier] = match;
+    return {
+      branch, site, org, tier,
+    };
+  }
+  return { };
+}
+
 // eslint-disable-next-line no-useless-escape
 export const emailPattern = '([A-Za-z0-9][._]?)+[A-Za-z0-9]@[A-Za-z0-9]+(\.?[A-Za-z0-9]){2}\.([A-Za-z0-9]{2,4})?';
 
 let submitBaseUrl = '';
-
-export const SUBMISSION_SERVICE = 'https://forms.adobe.com/adobe/forms/af/submit/';
 
 export function setSubmitBaseUrl(url) {
   submitBaseUrl = url;

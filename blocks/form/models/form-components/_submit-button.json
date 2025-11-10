@@ -10,7 +10,9 @@
             "template": {
               "jcr:title": "Submit",
               "buttonType": "submit",
-              "fieldType": "button"
+              "fieldType": "button",
+              "enabled": true,
+              "visible": true
             }
           }
         }
@@ -22,15 +24,14 @@
       "id": "form-submit-button",
       "fields": [
         {
-          "component": "tab",
+          "component": "container",
+          "name": "basic",
           "label": "Basic",
-          "name": "basic"
+          "collapsible": false,
+          "...": "../form-common/_basic-fields.json"
         },
         {
-          "...": "../form-common/_basic-fields.json#/fields"
-        },
-        {
-          "...": "../form-common/_help-container.json#/fields"
+          "...": "../form-common/_help-container.json"
         }
       ]
     }
