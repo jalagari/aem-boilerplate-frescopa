@@ -403,9 +403,7 @@ export function createDropdownUsingEnum(fd, wrapper) {
     && options?.[0]?.startsWith('https://')) {
     const optionsUrl = new URL(options?.[0]);
     // using async to avoid rendering
-    if (optionsUrl.hostname.endsWith('hlx.page')
-      || optionsUrl.hostname.endsWith('hlx.live')
-      || optionsUrl.hostname.endsWith('aem.live')
+    if (optionsUrl.hostname.endsWith('aem.live')
       || optionsUrl.hostname.endsWith('aem.page')) {
       fetch(`${optionsUrl.pathname}${optionsUrl.search}`)
         .then(async (response) => {
